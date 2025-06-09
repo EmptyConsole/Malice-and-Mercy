@@ -314,3 +314,26 @@ function oldLightning(list){
     }
   }
 }
+
+function reset(){
+  player1 = new player(4,1.3,2,0.5,9,1,500,300,21,28,0,0,["ArrowUp","ArrowLeft","ArrowDown","ArrowRight","w","a","s","d"],"rgb(149,255,241)"); //    drag-^ grav -^.maxj-^
+  cameray = 0;
+  camerax = 0;
+  blocks = [];
+  //block particle
+blockP = [];
+//turrent shoots
+bullets = [];
+//bullet trail/particle
+bulletsP = [];
+//If you are allowed to edit the level
+levelEdit =false;
+
+//LevelEdit Modes
+lock = -1;
+zoom = 170;
+shake = 0;
+levelCode = levels[0];
+currentLevel = 0;
+  buildLevel()
+}

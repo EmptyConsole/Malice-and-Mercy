@@ -45,4 +45,8 @@ function kbTypePressing(){
   if(kb.presses(']')){
     player1.inDark = !player1.inDark;
   }
+  if(kb.presses("Alt")){
+    // print("reset")
+    reset()
+  }
 }

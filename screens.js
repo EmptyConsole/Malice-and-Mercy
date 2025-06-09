@@ -5,6 +5,7 @@ var startSV2 = 0;
 var offUp = 0;
 var offUpV = 0;
 function screenZero(){
+  background(0)
   offUp+=offUpV;
   translate(0,offUp);
     push();
@@ -12,7 +13,7 @@ function screenZero(){
     stroke(255)
     strokeWeight(3);
     textSize(120)
-    text("UNDERCURRENT",500,200);
+    text("MALICE AND MERCY",500,200);
     translate(500,320);
     if(rectHit(mouseX,mouseY,500,320,0,0,400,120)){
       startSV += (1.1-startS)/15;

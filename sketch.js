@@ -100,6 +100,13 @@ function setup() {
  // sound.loop();
   //bomb test stack TEST
 }
+
+
+
+
+
+
+
 //Global Variables
 if("variables"=="variables"){
 var cameray = 0;
@@ -392,6 +399,7 @@ function draw() {
 }
   else if(screen == 0){
       equipScreen()
+    // screenZero()
 }
   
   // resetMatrix();
