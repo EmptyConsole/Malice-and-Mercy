@@ -1,0 +1,71 @@
+p5.play Game Jam 2025(Deadline: June 20th 2025):
+Submission Form
+Our Idea:
+A Cute Pixel Art Platformer:
+Platformer
+Shoot javelin at nodes to change dimensions
+Acquire 2-3 different Javelins
+Obstacles:
+Spikes ✓
+Lasers ✓
+Turrets ✓
+Enemies
+Boss
+
+Javelins:
+Basic
+Shoot it at nodes
+Attacker
+5 ammo at once
+Shoot it at enemies to deal damage
+Rocket
+Shooting it propels you a lot in a direction
+
+Spikes, Lasers, Turrets:
+Touch them(bullet or laser part, spike) and you die :)
+
+Enemies:
+Enemy 1
+Shoot Basic Javelin at it to reveal it’s shell
+Touch or jump at it to kill it
+Enemy 2
+Stands idle, Jumps at you if you get close
+Shoot Attack javelin at it
+
+Platforming:
+Moving Platforms
+Phasable Platforms ✓
+Solid Platforms ✓
+Break Away Platforms ✓
+D Node
+Changes Dimension
+Blast Node
+After hit, wait a few seconds
+Explodes and propels the player in the opposite direction
+Flip Node
+Flips gravity dimension to whatever it is(different node, different gravity side, different color)
+Grapple Node
+Grappels you towards the node when hit
+
+Arc:
+Areas
+Tutorial, 30 seconds-1 minute
+Rooms 10-15 minutes
+Boss 2-5 minutes
+Unlocks(how long until you get this)
+Normal 5 seconds
+D Node 10 seconds
+Blast Node 3 minutes
+Attack 5 minutes
+Enemies 5 minutes
+Flip Node 10 minutes 
+Grappel Node 12 minutes
+
+Tutorial(what should be included):
+Platforming Intro
+Javelin Into
+How it works
+What it does
+What might come later on(different javelins)
+Spikes
+Turrets(only a few in tutorial)
