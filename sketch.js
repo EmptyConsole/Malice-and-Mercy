@@ -398,8 +398,8 @@ function draw() {
   interface();
 }
   else if(screen == 0){
-      equipScreen()
-    // screenZero()
+      //equipScreen()
+     screenZero()
 }
   
   // resetMatrix();
@@ -443,6 +443,7 @@ function draw() {
     // player1.startTime=millis();
   // }
   push();
+  if(screen==1){
   textAlign(RIGHT);
   textSize(50);
   fill(255);
@@ -466,7 +467,16 @@ function draw() {
   player1.changeLevel(blocks[player1.personIndex].delay)
       player1.score+=1000;
     }
-   
+   }
+    if(player1.saveLine.stage==2){
+      background(0,-abs((((player1.saveLine.time-75)*255/50)-255))+255);
+    if(player1.saveLine.time==120){
+  player1.changeLevel(blocks[player1.personIndex].delay)
+      player1.score+=3000;
+    }else{
+      // zoom += (player1.saveLine.time*4-zoom)/10;
+    }
+   }
   }
   if(currentLevel==7){
     background(0)

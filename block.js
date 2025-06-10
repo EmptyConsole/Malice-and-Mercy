@@ -275,8 +275,10 @@ class block{
     if(this.type==15){
       // print(player1.able)
       this.bombMap.display();
+      if(player1.saveLine.stage==3){
       this.bx = this.bombMap.px;
       this.by = this.bombMap.py;
+      }
       image(playerSprite[2][0],this.bx,this.by-22.5,60,60);
       this.bombMap.held = this.held;
       if(this.held){
@@ -284,9 +286,12 @@ class block{
         //no abilites
          //print("held")
         player1.able=false
-        //auto move
+        
+          //auto move
         this.bombMap.px-=(this.bx-player1.px)/5;
         this.bombMap.py-=(this.by-player1.py+5+sin(frameCount/20)*2)/5;
+        // }
+        
          if(kb.presses("q")){
            this.bombMap.throws();
            this.held = false;
@@ -310,16 +315,42 @@ class block{
         var sensor=blocks.findIndex(hold => hold.type==16)
         if(sensor != -1){
           //print("there")
-          if(rectHit(player1.px,player1.py,blocks[sensor].bx,blocks[sensor].by,player1.psx,player1.psy,blocks[sensor].bsx,blocks[sensor].bsy)){
-         // print("inside")
-          player1.changeLevel(this.delay)
-        player1.score+=3000
-        this.held=false
+          if(rectHit(player1.px,player1.py,blocks[sensor].bx,blocks[sensor].by,player1.psx,player1.psy,blocks[sensor].bsx,blocks[sensor].bsy) && player1.saveLine.stage==3){
+        //   player1.changeLevel(this.delay)
+        // player1.score+=3000
+        // this.held=false
+        //     player1.holding=false
+        //   player1.able=true
+            // this.held=false
+            player1.saveLine.time=0
             player1.holding=false
-          player1.able=true
-            // player1.px=0
-            // player1.py=0
+            // blocks[blocks.length]=(new block(blocks[sensor].bx,blocks[sensor].by,blocks[sensor].bsx,210*8,13,0,0,0))
+            // workingT=false/
+            // print("saved")
         }
+          if(player1.saveLine.stage==0){
+            zoom += (200-zoom)/10;
+            this.bx=this.bx-(this.bx-blocks[sensor].bx)/10
+            // this.by=this.by-(this.by-blocks[sensor].by+30)/10
+            this.bombMap.px=this.bx
+            // this.bombMap.py=this.by
+            print("first part")
+          }
+          if(player1.saveLine.stage==1){
+            zoom += (325-zoom)/10;
+            // zoom += (300-zoom)/10;
+            shake=(player1.saveLine.time/3)^3
+            this.bx=cos(frameCount/2)*blocks[sensor].bsx+blocks[sensor].bx
+            // this.bsy-=0.25
+            // this.by-=3.05
+            this.by-=(player1.saveLine.time/5)^2
+            this.bombMap.px=this.bx
+            this.bombMap.py=this.by
+            // push()
+            // fill(204, 207, 58,(player1.saveLine.time/3)^3)
+            // ellipse(this.bx,this.by,player1.saveLine.time/1.5)
+            // pop()
+          }
         }
         
         

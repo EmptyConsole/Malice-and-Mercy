@@ -124,6 +124,7 @@ class player{
     this.startTime=null;
     this.gravLine = new timeLine(3232,[16,3,1]);
     this.killLine = new timeLine(3232,[45,6,1,15,100]);
+    this.saveLine = new timeLine(3232,[10,67,100]) //
     this.personIndex = 0;
   }
   timer(){
@@ -354,8 +355,10 @@ class player{
     }
   }
   skin(){
+    // print(this.saveLine.stage)
     this.gravLine.work();
     this.killLine.work();
+    this.saveLine.work()
     if(this.showable){
       if(this.light==undefined){
         let lights = {range:200,dark:120,light:30}
@@ -483,7 +486,7 @@ class player{
           bombs[bombs.length] = new bomb(this.sx,this.sy,0,0,2,15,15,1);
         }
       }
-    }else{
+      }else{
       if(this.killLine.stage==0){
         zoom += (300-zoom)/10;
         this.sx += (blocks[this.personIndex].bx-95*this.direction-this.killLine.time*2*this.direction-this.sx)/6;
