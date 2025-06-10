@@ -1,4 +1,4 @@
-A platformer filled with choices... Created by Empty Console, a team of middle schoolers. Found on Discord at shyguygamedev, hfanggamedev, and emey7327.
+A platformer filled with choices... Created by Empty Console. Found on Discord at shyguygamedev, hfanggamedev, and emey7327.
 
 This platforming game is being submitted into the Summer P5 Play Game Jam. 
 It's main character is a grim reaper, who must choose between saving or killing a person to advance to the next level.
