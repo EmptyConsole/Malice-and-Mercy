@@ -577,25 +577,26 @@ if(dis(blocks[selEdit].bx-blocks[selEdit].bsx/2,blocks[selEdit].by-blocks[selEdi
 }
 function keyPressed() {
         //restarter
-    if(keyIsDown(82)&&!keyIsDown(16)){
+    // if(keyIsDown(82)&&!keyIsDown(16)){
+  if(keyIsDown(82)){
       if(playerEdit){
         player1.restarter();
       }else{
          player1.respawn();
       }
     }
-  if(keyIsDown(71)){
-    player1.skinx = floor(random(0,15))
-  player1.skiny = floor(player1.skinx/5);
-    player1.skinx = floor(random(0,15))
-  }
-    if(keyIsDown(220)){
-    levelEdit = !levelEdit;
-  }
-  if(keyIsDown(66)){
-    camP = !camP;
-    zoom = 100;
-  }
+  // if(keyIsDown(71)){
+  //   player1.skinx = floor(random(0,15))
+  // player1.skiny = floor(player1.skinx/5);
+  //   player1.skinx = floor(random(0,15))
+  // }
+  //   if(keyIsDown(220)){
+  //   levelEdit = !levelEdit;
+  // }
+  // if(keyIsDown(66)){
+  //   camP = !camP;
+  //   zoom = 100;
+  // }
   if(levelEdit){
     if(keyIsDown(13)){
       blocks.sort((a, b) => a.compareTo(b))
@@ -757,14 +758,14 @@ function keyPressed() {
     }
   }
   }
-      if(keyIsDown(13)){
-      let build = "";
-       for(let i=0; i<blocks.length; i++){  
-         build+=buildChange(blocks[i].bx)+buildChange(blocks[i].by)+buildChange(blocks[i].bsx)+buildChange(blocks[i].bsy)+buildChange(blocks[i].type)+buildChange(blocks[i].rotation)+buildChange(blocks[i].delay)+buildChange(blocks[i].range)+"C";
+//       if(keyIsDown(13)){
+//       let build = "";
+//        for(let i=0; i<blocks.length; i++){  
+//          build+=buildChange(blocks[i].bx)+buildChange(blocks[i].by)+buildChange(blocks[i].bsx)+buildChange(blocks[i].bsy)+buildChange(blocks[i].type)+buildChange(blocks[i].rotation)+buildChange(blocks[i].delay)+buildChange(blocks[i].range)+"C";
         
-       }
-      copyStringToClipboard(build);
-    }
+//        }
+//       copyStringToClipboard(build);
+//     }
 }
 function dragPlace(){
   //redeclared for let variables

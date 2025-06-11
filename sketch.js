@@ -184,7 +184,7 @@ var aver = 0;
 var imageSize = 16;
 var bombs = [];
 var speecher = false;
-var screen = 1;
+var screen = 0;
 var trans = 200;
 var charge = 0;
 }

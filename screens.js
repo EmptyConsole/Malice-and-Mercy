@@ -51,4 +51,7 @@ function screenZero(){
   textAlign(CENTER,CENTER);
   text("PLAY",0,0);
   pop();
+  if(b.clicked){
+    screen=1;
+  }
 }
