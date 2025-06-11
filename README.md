@@ -12,19 +12,3 @@ R to reset to last checkpoint.
 Hold R to reset the level.
 Option or Alt to restart the entire game.
 ] to create a cool lighting effect.
-B to switch camera mode.
-A and D to zoom in and out in certain camera mode.
-\ to enter level editor mode.
-
-While in level editor mode:
-Mouse to select a block.
-` to toggle flight mode.
-Hold 1 or 2 and hover over a block with mouse to select it. Most blocks have a corresponding image but some don't.
-Hold Space to be able to place selected block.
-Return or Enter to copy level code to clipboard. This allows you to save your level. However, the level code can only be used if put directly into the code.
-Hold Shift to be able to change block components using arrow keys.
-C to copy the selected block.
-V to paste the copied block.
-Delete or Backspace to delete selected block.
-F to rotate the next placed block.
-E to refresh tile mapping.
