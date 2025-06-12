@@ -11,4 +11,3 @@ Q to throw equipped ability.
 R to reset to last checkpoint.
 Hold R to reset the level.
 Option or Alt to restart the entire game.
-] to create a cool lighting effect.
