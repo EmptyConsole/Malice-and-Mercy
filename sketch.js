@@ -133,7 +133,7 @@ var bullets = [];
 //bullet trail/particle
 var bulletsP = [];
 //If you are allowed to edit the level
-var levelEdit =true;
+var levelEdit =false;
 
 //LevelEdit Modes
 var editMode = "place";
