@@ -331,19 +331,20 @@ class block{
           if(player1.saveLine.stage==0){
             zoom += (200-zoom)/10;
             this.bx=this.bx-(this.bx-blocks[sensor].bx)/10
+            this.by+=((blocks[sensor].by+blocks[sensor].bsy/2)-this.by)/5
             // this.by=this.by-(this.by-blocks[sensor].by+30)/10
             this.bombMap.px=this.bx
             // this.bombMap.py=this.by
-            print("first part")
+            // print("first part")
           }
           if(player1.saveLine.stage==1){
             zoom += (325-zoom)/10;
             // zoom += (300-zoom)/10;
-            shake=(player1.saveLine.time/3)^3
-            this.bx=cos(frameCount/2)*blocks[sensor].bsx+blocks[sensor].bx
-            // this.bsy-=0.25
-            // this.by-=3.05
-            this.by-=(player1.saveLine.time/5)^2
+            shake=(player1.saveLine.time/4)^3
+            this.bx=sin(frameCount/2)*blocks[sensor].bsx+blocks[sensor].bx
+            // this.by=sin(frameCount/2)*blocks[sensor].bsy/2+blocks[sensor].by
+            // this.by+=(blocks[sensor].by+blocks[sensor].bsy/2-blocks[sensor].bsy/28-this.by)/5
+            this.by-=3.2
             this.bombMap.px=this.bx
             this.bombMap.py=this.by
             // push()

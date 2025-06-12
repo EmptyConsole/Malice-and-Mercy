@@ -37,6 +37,7 @@ function preload(){
   music[1] = loadSound('game_assets/Reduced_Cascade.mp3');
   music[2] = loadSound('game_assets/chicken.wav');
   music[3] = loadSound('game_assets/waver.wav');
+  music[4] = loadSound('game_assets/wistful thinking.mp3')
   testEquip=loadImage("IMG_9192.jpeg")
 }
 var amp;
@@ -132,7 +133,7 @@ var bullets = [];
 //bullet trail/particle
 var bulletsP = [];
 //If you are allowed to edit the level
-var levelEdit =false;
+var levelEdit =true;
 
 //LevelEdit Modes
 var editMode = "place";
@@ -397,10 +398,6 @@ function draw() {
  //music.setVolume(0.3+sin(frameCount/40)/20);
   interface();
 }
-  else if(screen == 0){
-      //equipScreen()
-     screenZero()
-}
   
   // resetMatrix();
   // translate(500,300);
@@ -491,8 +488,20 @@ function draw() {
     text("Congratulations!\nYour score was:\n"+player1.score+" points,\nand your time was:\n"+placeKeep2+" seconds.",width/2,height/5,)
     // text("Congratulations!\nYour score was:\n"+"21000"+" points,\nand your time was:\n"+"130.8"+" seconds.",width/2,height/5,)
     // print("done")
+    
+    //setting up music
+    // music[0].stop()
+    music[4].loop()
+    music[4].setVolume(0)
+    music[0].setVolume(0,7)
+    music[4].setVolume(0.8,2,10)
+    
     frameRate(0)
   }
+  if(screen == 0){
+      //equipScreen()
+     screenZero()
+}
 }
 var vol = 0.6;
 var currentSound = 0;

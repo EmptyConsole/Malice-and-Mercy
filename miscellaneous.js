@@ -337,3 +337,19 @@ levelCode = levels[0];
 currentLevel = 0;
   buildLevel()
 }
+
+function toxt(words,color,x,y){
+  let s = 0;
+  let full = 0;
+  for(let w = 0; w<words.length; w++){
+    full+=textWidth(words[w]);
+  }
+  for(let w = 0; w<words.length; w++){
+    if(color[w]){
+      text(words[w],x-full/2+s+textWidth(words[w])/2,y+sin(w*20+frameCount*5)*5);
+    }else{
+      text(words[w],x-full/2+s+textWidth(words[w])/2,y);
+    }
+    s+=textWidth(words[w]);
+  }
+}

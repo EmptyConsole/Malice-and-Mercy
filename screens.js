@@ -1,4 +1,4 @@
-var b = new button(500,400,300,125,1,0.2,1.2,1.2);
+var b = new button(500,450,300,125,1,0.2,1.5,1.2);
 var startS = 1;
 var startSV = 0;
 var startS2 = 1;
@@ -19,14 +19,14 @@ function screenZero(){
     let words = ["M","E","R","C","Y"];
     for(let i=0; i<words.length; i++){
       push();
-      translate(500-words.length*45+45+90*i,260);
+      translate(500-words.length*45+45+90*i,280);
       rotate(sin(frameCount*3+i*20)*10)
       text(words[i],0,0);
       pop();
     }
   push();
   textSize(60);
-  translate(500,157);
+  translate(500,177);
   rotate(sin(frameCount*2)*5);
    strokeWeight(2);
   text("and",0,0);
@@ -34,11 +34,17 @@ function screenZero(){
   words = ["M","A","L","I","C","E"];
     for(let i=0; i<words.length; i++){
       push();
-      translate(500-words.length*45+45+90*i,90);
+      translate(500-words.length*45+45+90*i,110);
       rotate(-sin(frameCount*3+i*20)*10)
       text(words[i],0,0);
       pop();
     }
+  push();
+  fill(255);
+  noStroke();
+  textSize(40);
+  toxt(["By: ","E","m","p","t","y"," ","C","o","n","s","o","l","e"],[false,true,true,true,true,true,true,true,true,true,true,true,true,true],500,345);
+  pop();
   //x,y,sx,sy,scale,scalev,dragv,drag
   b.work();
   push();
@@ -49,6 +55,8 @@ function screenZero(){
   scale(b.size,b.size);
   rect(0,0,b.sizeX,b.sizeY);
   textAlign(CENTER,CENTER);
+  strokeWeight(2);
+  fill(255);
   text("PLAY",0,0);
   pop();
   if(b.clicked){
