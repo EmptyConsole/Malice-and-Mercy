@@ -12,6 +12,9 @@ var gateSprite;
 
 var lastLightning=0
 var timer=9
+var musicVol=0.8;
+var soundVol=0.7;
+
 //startX startY 
 //start, middle, end,
 var gatexSprite;
@@ -23,6 +26,8 @@ function preload(){
   sounds[3] = loadSound('Sound_FX/hit.wav');
   sounds[4] = loadSound('Sound_FX/hit2.wav');
   sounds[5] = loadSound('Sound_FX/power.wav');
+  sounds[6] = loadSound('Sound_FX/click.wav');
+  sounds[7] = loadSound('Sound_FX/click2.wav');
   sheet = loadImage('game_assets/tiles1.png');
   pSheet = loadImage('game_assets/grimm.png');
   portalSprite = loadImage('game_assets/portal.png');
@@ -93,13 +98,17 @@ function setup() {
   
 //  player1.makeSprite();
   amp = new p5.Amplitude();
- music[0].loop();
+ music[4].loop();
+  music[4].setVolume(0.8*musicVol*masterVol)
   player1.skinx = 0;
   player1.skiny = 0;
  // player1.skinx = floor(random(0,5))
  // player1.skiny = floor(random(0,1))
  // sound.loop();
   //bomb test stack TEST
+   musics = new button(550+(musicVol)*350,450,20,40,1,0.2,1.2,1.3);
+   masters = new button(550+(masterVol)*350,200,20,40,1,0.2,1.2,1.3);
+ soundss = new button(550+(soundVol)*350,325,20,40,1,0.2,1.2,1.3);
 }
 
 
@@ -196,6 +205,17 @@ var arrows=[]
 //Void Draw
 var workingT = false; 
 function draw() {
+  if(currentLevel==7){
+     screen = 2;
+    music[4].loop()
+    music[0].setVolume(0*musicVol*masterVol,1)
+    music[4].setVolume(0.8*musicVol*masterVol,1.5)
+    player1.finalTime=(floor((millis()-player1.startTime)/100)/10)+((((floor((millis()-player1.startTime)/100)/10)%1)==0)?".0":"")
+    // music[0].stop()
+    // next = 4;
+    currentLevel = 0;
+    levelCode = levels[0];
+  }
   // print(player1.able)
   //print(player1.touched);
   //print(blocks[player1.personIndex].held);
@@ -223,12 +243,12 @@ function draw() {
   kbTypePressing();
   shake/=1.5;
    // aver+=frameRate()*1;
-  if(keyIsDown(187)){
-    player1.px=500;
-    player1.py=300;
-    player1.prex=500;
-    player1.prey=300;
-  }
+  // if(keyIsDown(187)){
+  //   player1.px=500;
+  //   player1.py=300;
+  //   player1.prex=500;
+  //   player1.prey=300;
+  // }
   background(120,180,176,trans);
   noCursor();
   push();
@@ -345,13 +365,6 @@ function draw() {
   }
    
   }
-  resetMatrix();
-  translate(500,300);
-  scale(zoom/100,zoom/100);
-  translate(-500,-300);
-  translate(trucam);
-  mouser=createVector((mouseX-500)/(zoom/100)-trucam.x+500,(mouseY-300)/(zoom/100)-trucam.y+300);
-  mouseSkin();
     
   resetMatrix();
   stroke(255);
@@ -407,34 +420,30 @@ function draw() {
   // mouser=createVector((mouseX-500)/(zoom/100)-trucam.x+500,(mouseY-300)/(zoom/100)-trucam.y+300);
   // mouseSkin();
   //MUSIC CONTROLERS!!!!!!!!!
-  if(kb.presses('y')){
-    next = floor(random(0,4));
-    print("Playing New Music")
-  }
-  music[currentSound].setVolume(vol);
-  if(next!=currentSound){
-     vol-=0.007;
-  }else{
-    vol+=0.01;
-  }
+  // music[currentSound].setVolume(vol);
+  // if(next!=currentSound){
+  //    vol-=0.007;
+  // }else{
+  //   vol+=0.01;
+  // }
 //  print(next,currentSound)
-  if(vol<=-0){
-    //print(currentSound)
-    for(let i=0; i<music.length; i++){
-    music[i].stop();
-    }
-    currentSound=next;
-    //print(currentSound)
-    music[currentSound].loop();
-   // print(currentSound)
-  }
-  if(currentSound==1){
-  //  maxVol = 0.3;
-  }else if(currentSound==0){
-   //  maxVol = 0.2;
-  }
-  vol = min(vol,maxVol);
-  vol = max(vol,0);
+  // if(vol<=-0){
+  //   //print(currentSound)
+  //   for(let i=0; i<music.length; i++){
+  //   music[i].stop();
+  //   }
+  //   currentSound=next;
+  //   //print(currentSound)
+  //   music[currentSound].loop();
+  //  // print(currentSound)
+  // }
+  // if(currentSound==1){
+  // //  maxVol = 0.3;
+  // }else if(currentSound==0){
+  //  //  maxVol = 0.2;
+  // }
+  // vol = min(vol,maxVol);
+  // vol = max(vol,0);
   resetMatrix();
   // if(player1.startTime==null){
     // player1.startTime=millis();
@@ -475,38 +484,67 @@ function draw() {
     }
    }
   }
-  if(currentLevel==7){
-    background(0)
-    textSize(80)
+  if(screen==2){
+    menuB.work();
+    //next = 4;
+    background(20)
+    textSize(60)
     textAlign(CENTER)
     fill(255)
     stroke(0)
-    // if(player1.startTime!=null){
-    var placeKeep1=floor((millis()-player1.startTime)/100)/10
-    var placeKeep2=placeKeep1+(((placeKeep1%1)==0)?".0":"")
-  // }
-    text("Congratulations!\nYour score was:\n"+player1.score+" points,\nand your time was:\n"+placeKeep2+" seconds.",width/2,height/5,)
+    text("Congratulations!\nYour score was:\n"+player1.score+" points,\nand your time was:\n"+player1.finalTime+" seconds.",width/2,height/5-50)
     // text("Congratulations!\nYour score was:\n"+"21000"+" points,\nand your time was:\n"+"130.8"+" seconds.",width/2,height/5,)
     // print("done")
     
     //setting up music
     // music[0].stop()
-    music[4].loop()
-    music[4].setVolume(0)
-    music[0].setVolume(0,7)
-    music[4].setVolume(0.8,2,10)
-    
-    frameRate(0)
+   // frameRate(0)
+    push();
+    translate(menuB.x,menuB.y);
+    scale(menuB.size,menuB.size);
+    strokeWeight(7.5);
+    noFill();
+    stroke(255);
+    rect(0,0,menuB.sizeX,menuB.sizeY);
+    textAlign(CENTER,CENTER);
+    textSize(95);
+    strokeWeight(2);
+    fill(255);
+    text("MENU!",0,2.5)
+    pop();
+    sett.work();
+    b.work();
+    b.clicked = false;
+    sett.clicked = false;
+    if(menuB.clicked){
+      screen = 0;
+      sounds[7].play();
+    sounds[7].setVolume(1*soundVol*masterVol);
+    }
   }
+  resetMatrix();
   if(screen == 0){
       //equipScreen()
      screenZero()
 }
+  if(screen == 3){
+      //equipScreen()
+     screenThree()
 }
-var vol = 0.6;
-var currentSound = 0;
-var next = 0;
+    resetMatrix();
+  translate(500,300);
+  scale(zoom/100,zoom/100);
+  translate(-500,-300);
+  translate(trucam);
+  mouser=createVector((mouseX-500)/(zoom/100)-trucam.x+500,(mouseY-300)/(zoom/100)-trucam.y+300);
+  mouseSkin();
+}
+var menuB = new button(500,500,300,120,1,1.2,1.2,1.2);
+var vol = 0.4;
+var currentSound = 4;
+var next = 4;
 var maxVol = 0.4;
+var svol = 0.5;
 //P1 and P2 Players
 function players(){
   player1.timer();

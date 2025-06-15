@@ -72,10 +72,10 @@ class bomb{
     if(this.timer ==0 &&this.type ==3){
       shake = 20;
       sounds[4].play();
-      sounds[4].setVolume(0.9)
+      sounds[4].setVolume(0.9*soundVol*masterVol)
       sounds[4].rate(random(0.6,0.7));
       sounds[3].play();
-      sounds[3].setVolume(0.8)
+      sounds[3].setVolume(0.8*soundVol*masterVol)
       sounds[3].rate(random(1.1,1.3));
         for(var u = 0; u<20; u++){
         bulletsP[bulletsP.length] = new bulletP(this.px,this.py,this.px+cos(random(-360,0)*PI/180)*10,this.py+sin(random(-360,0)*PI/180)*10,random(1,16),"5");
@@ -139,10 +139,10 @@ class bomb{
     if(this.timer==0&&this.type==2){
       shake=20;
       sounds[2].play();
-      sounds[2].setVolume(0.8)
+      sounds[2].setVolume(0.8*soundVol*masterVol)
       sounds[2].rate(random(1.1,1.3));
       sounds[3].play();
-      sounds[3].setVolume(0.8)
+      sounds[3].setVolume(0.8*soundVol*masterVol)
       sounds[3].rate(random(1.1,1.3));
 //         for(var u = 0; u<20; u++){
 //         bulletsP[bulletsP.length] = new bulletP(this.px,this.py,this.px+cos(random(-360,0)*PI/180)*10,this.py+random(-10,10),random(1,16),"#00BCD4");
@@ -179,10 +179,10 @@ class bomb{
       }
       shake=100;
       sounds[1].play();
-      sounds[1].setVolume(0.8)
+      sounds[1].setVolume(0.8*soundVol*masterVol)
       sounds[1].rate(random(1.1,1.3));
       sounds[3].play();
-      sounds[3].setVolume(0.8)
+      sounds[3].setVolume(0.8*soundVol*masterVol)
       sounds[3].rate(random(1.1,1.3));
       for(var u = 0; u<20; u++){
         bulletsP[bulletsP.length] = new bulletP(this.px,this.py,this.px+cos(random(-360,0)*PI/180)*10,this.py+sin(random(-360,0)*PI/180)*10,random(1,16),"1");

@@ -1,4 +1,5 @@
-var b = new button(500,450,300,125,1,0.2,1.5,1.2);
+var b = new button(500,425,250,90,1,0.2,1.2,1.3);
+var sett = new button(500,535,377,90,1,0.2,1.2,1.4);
 var startS = 1;
 var startSV = 0;
 var startS2 = 1;
@@ -6,11 +7,8 @@ var startSV2 = 0;
 var offUp = 0;
 var offUpV = 0;
 function screenZero(){
-  background(0);
+  background(20);
      angleMode(DEGREES)
-  offUp+=offUpV;
-  translate(0,offUp);
-    push();
     fill(255);
     stroke(255)
     strokeWeight(3);
@@ -48,8 +46,9 @@ function screenZero(){
   //x,y,sx,sy,scale,scalev,dragv,drag
   b.work();
   push();
+  textSize(90);
   noFill();
-  strokeWeight(7.5);
+  strokeWeight(6.5);
   stroke(255);
   translate(b.x,b.y);
   scale(b.size,b.size);
@@ -57,9 +56,39 @@ function screenZero(){
   textAlign(CENTER,CENTER);
   strokeWeight(2);
   fill(255);
-  text("PLAY",0,0);
+  text("PLAY",0,2.5);
   pop();
+  
+  sett.work();
+  push();
+  textSize(80);
+  noFill();
+  strokeWeight(7.5);
+  stroke(255);
+  translate(sett.x,sett.y);
+  scale(sett.size,sett.size);
+  rect(0,0,sett.sizeX,sett.sizeY);
+  textAlign(CENTER,CENTER);
+  strokeWeight(2);
+  fill(255);
+  text("SETTINGS",0,2.5);
+  pop();
+  music[0].setVolume(0);
   if(b.clicked){
     screen=1;
+    // next = 0;
+    sounds[7].play();
+    sounds[7].setVolume(1*soundVol*masterVol);
+    music[0].loop()
+     music[0].setVolume(0.8*musicVol*masterVol,3,2)
+    music[4].setVolume(0.8*musicVol*masterVol)
+   // print(0.8*musicVol*masterVol)
+    music[4].setVolume(0*musicVol*masterVol,2);
+    player1.startTime = 0;
+  }
+  if(sett.clicked){
+    screen = 3;
+    sounds[7].play();
+    sounds[7].setVolume(1*soundVol*masterVol);
   }
 }

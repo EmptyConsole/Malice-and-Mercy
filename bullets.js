@@ -169,6 +169,18 @@ class bulletP{
        let yv = (this.proyt-this.proy)/hyp*this.speed;
        rotate(atan2(yv,xv)-45*PI/180);
       image(playerSprite[1][3],0,0,this.size/this.msize*70,this.size/this.msize*70);        
+       }else if(this.type=="12"){
+             let hyp = dis(this.prox,this.proy,this.proxt,this.proyt);
+       let xv = (this.proxt-this.prox)/hyp*this.speed;
+       let yv = (this.proyt-this.proy)/hyp*this.speed;
+       rotate(atan2(yv,xv)-45*PI/180);
+      image(playerSprite[2][3],0,0,this.size/this.msize*70,this.size/this.msize*70);        
+       }else if(this.type=="13"){
+             let hyp = dis(this.prox,this.proy,this.proxt,this.proyt);
+       let xv = (this.proxt-this.prox)/hyp*this.speed;
+       let yv = (this.proyt-this.proy)/hyp*this.speed;
+       rotate(atan2(yv,xv)-45*PI/180);
+      image(playerSprite[3][3],0,0,this.size/this.msize*70,this.size/this.msize*70);        
        }else if(this.type == 0){
       rect(0,0,this.size,this.size);
   }else{

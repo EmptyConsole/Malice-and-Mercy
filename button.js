@@ -16,8 +16,9 @@ class button{
     this.heldFor = 0;
     this.state = false;
     //just in case i use a for loop in constructor, generally it won't disturb much if it's below it, but just in case :3
+    //it doesn't do anything lol, past HF_ang was an idiot
+    //lmao
     this.type = i2;
-    
   }
   work(){
     //this.size-=sin((frameCount-1)/20)/50;
@@ -33,6 +34,7 @@ class button{
     this.size+=this.sizev;
     //this.size+=sin(frameCount/20)/50;
     if(rectHit(this.x,this.y,mouseX,mouseY,this.sizeX,this.sizeY,0,0)&&!this.last&&mouseIsPressed){
+      this.held = true;
       this.last = true;
       this.clicked = true;
       this.clicks++;
@@ -44,7 +46,10 @@ class button{
     if(!rectHit(this.x,this.y,mouseX,mouseY,this.sizeX,this.sizeY,0,0)||!mouseIsPressed){
       this.last = false;
     }
-    if(rectHit(this.x,this.y,mouseX,mouseY,this.sizeX,this.sizeY,0,0)&&mouseIsPressed){
+    if(this.held&&!mouseIsPressed){
+      this.held = false;
+    }
+    if(this.held){
       this.held = true;
       this.heldFor++;
       this.sizev=max(0.08,this.sizev);

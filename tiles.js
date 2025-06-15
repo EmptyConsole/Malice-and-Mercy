@@ -758,14 +758,14 @@ function keyPressed() {
     }
   }
   }
-//       if(keyIsDown(13)){
-//       let build = "";
-//        for(let i=0; i<blocks.length; i++){  
-//          build+=buildChange(blocks[i].bx)+buildChange(blocks[i].by)+buildChange(blocks[i].bsx)+buildChange(blocks[i].bsy)+buildChange(blocks[i].type)+buildChange(blocks[i].rotation)+buildChange(blocks[i].delay)+buildChange(blocks[i].range)+"C";
+      if(keyIsDown(13)){
+      let build = "";
+       for(let i=0; i<blocks.length; i++){  
+         build+=buildChange(blocks[i].bx)+buildChange(blocks[i].by)+buildChange(blocks[i].bsx)+buildChange(blocks[i].bsy)+buildChange(blocks[i].type)+buildChange(blocks[i].rotation)+buildChange(blocks[i].delay)+buildChange(blocks[i].range)+"C";
         
-//        }
-//       copyStringToClipboard(build);
-//     }
+       }
+      copyStringToClipboard(build);
+    }
 }
 function dragPlace(){
   //redeclared for let variables

@@ -341,12 +341,16 @@ class block{
             zoom += (325-zoom)/10;
             // zoom += (300-zoom)/10;
             shake=(player1.saveLine.time/4)^3
-            this.bx=sin(frameCount/2)*blocks[sensor].bsx+blocks[sensor].bx
+            this.bx=sin(frameCount/2.5)*blocks[sensor].bsx/2+blocks[sensor].bx
             // this.by=sin(frameCount/2)*blocks[sensor].bsy/2+blocks[sensor].by
             // this.by+=(blocks[sensor].by+blocks[sensor].bsy/2-blocks[sensor].bsy/28-this.by)/5
-            this.by-=3.2
+            this.by-=4.2;
             this.bombMap.px=this.bx
             this.bombMap.py=this.by
+            for(let i=0; i<random(1,4); i++){
+            bulletsP[bulletsP.length] = new bulletP(this.bx,this.by,this.bx+sin(random(0,2*PI))*30,this.by+cos(random(0,2*PI))*30,random(0,5),"5");
+            }
+            bulletsP[bulletsP.length] = new bulletP(this.bx,this.by,this.bx,this.by,random(0,5),"8");
             // push()
             // fill(204, 207, 58,(player1.saveLine.time/3)^3)
             // ellipse(this.bx,this.by,player1.saveLine.time/1.5)

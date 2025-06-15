@@ -119,6 +119,7 @@ class player{
     //Score keepings
     this.score=0
     this.scoreC = 0;
+    this.finalTime;
     // this.time=0
     // this.time=0\
     this.startTime=null;
@@ -230,7 +231,7 @@ class player{
     player1.startTime=millis()
   }
        sounds[0].play(); 
-       sounds[0].setVolume(random(0.2,0.3))
+       sounds[0].setVolume(random(0.2,0.3)*soundVol*masterVol)
       sounds[0].rate(random(0.9,1.0));
       this.yvel=-this.jumpSt;
       this.jumpDown = false;
@@ -323,7 +324,7 @@ class player{
            this.yvel=-this.jumpSt;
           this.jumps = 0;
           sounds[0].play(); 
-       sounds[0].setVolume(random(0.13,0.3))
+       sounds[0].setVolume(random(0.13,0.3)*soundVol*masterVol)
           sounds[0].rate(random(1.3,1.5));
       for(var u = 0; u<3; u++){
             bulletsP[bulletsP.length] = new bulletP(this.px+random(-10,10),this.py-12,this.px+cos(random(-180,0)*PI/180)*10-this.xvel*2,this.py+12+sin(random(-180,0)*PI/180)*10,random(7,15));
@@ -553,9 +554,9 @@ class player{
       pop();
     fill(255,0,255,100);
       noStroke();
-      if(kb.pressing('-')){
-        rect(this.px,this.py,this.psx,this.psy)
-      }
+      // if(kb.pressing('-')){
+      //   rect(this.px,this.py,this.psx,this.psy)
+      // }
     this.useChecks();
   }
     push()
