@@ -84,7 +84,7 @@ function screenZero(){
     music[4].setVolume(0.8*musicVol*masterVol)
    // print(0.8*musicVol*masterVol)
     music[4].setVolume(0*musicVol*masterVol,2);
-    player1.startTime = 0;
+    player1.startTime = millis();
   }
   if(sett.clicked){
     screen = 3;
