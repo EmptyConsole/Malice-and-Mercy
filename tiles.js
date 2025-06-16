@@ -590,9 +590,9 @@ function keyPressed() {
   // player1.skiny = floor(player1.skinx/5);
   //   player1.skinx = floor(random(0,15))
   // }
-  //   if(keyIsDown(220)){
-  //   levelEdit = !levelEdit;
-  // }
+    if(keyIsDown(220)){
+    levelEdit = !levelEdit;
+  }
   // if(keyIsDown(66)){
   //   camP = !camP;
   //   zoom = 100;

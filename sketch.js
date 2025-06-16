@@ -207,14 +207,17 @@ var workingT = false;
 function draw() {
   if(currentLevel==7){
      screen = 2;
-    music[4].loop()
+    // music[4].loop()
     music[0].setVolume(0*musicVol*masterVol,1)
-    music[4].setVolume(0.8*musicVol*masterVol,1.5)
+    music[4].setVolume(0.8*musicVol*masterVol,1.5,1)
     player1.finalTime=(floor((millis()-player1.startTime)/100)/10)+((((floor((millis()-player1.startTime)/100)/10)%1)==0)?".0":"")
+    // music[4].loop()
     // music[0].stop()
     // next = 4;
-    currentLevel = 0;
-    levelCode = levels[0];
+    // currentLevel = 0;
+    // levelCode = levels[0];
+    // buildLevel()
+    reset()
   }
   // print(player1.able)
   //print(player1.touched);

@@ -79,9 +79,10 @@ function screenZero(){
     // next = 0;
     sounds[7].play();
     sounds[7].setVolume(1*soundVol*masterVol);
+    music[0].stop()
     music[0].loop()
      music[0].setVolume(0.8*musicVol*masterVol,3,2)
-    music[4].setVolume(0.8*musicVol*masterVol)
+    // music[4].setVolume(0.8*musicVol*masterVol)
    // print(0.8*musicVol*masterVol)
     music[4].setVolume(0*musicVol*masterVol,2);
     player1.startTime = millis();
