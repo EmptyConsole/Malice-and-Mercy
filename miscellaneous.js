@@ -336,6 +336,7 @@ shake = 0;
 levelCode = levels[0];
 currentLevel = 0;
   buildLevel()
+  player1.startTime=undefined
 }
 
 function toxt(words,color,x,y){

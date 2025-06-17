@@ -206,18 +206,22 @@ var arrows=[]
 var workingT = false; 
 function draw() {
   if(currentLevel==7){
+    levelCode = levels[0];
+currentLevel = 0;
      screen = 2;
     // music[4].loop()
     music[0].setVolume(0*musicVol*masterVol,1)
     music[4].setVolume(0.8*musicVol*masterVol,1.5,1)
+    // print(player1.startTime)
     player1.finalTime=(floor((millis()-player1.startTime)/100)/10)+((((floor((millis()-player1.startTime)/100)/10)%1)==0)?".0":"")
+    // print(player1.finalTime)
     // music[4].loop()
     // music[0].stop()
     // next = 4;
     // currentLevel = 0;
     // levelCode = levels[0];
     // buildLevel()
-    reset()
+    // reset()
   }
   // print(player1.able)
   //print(player1.touched);
@@ -495,6 +499,7 @@ function draw() {
     textAlign(CENTER)
     fill(255)
     stroke(0)
+    // print(player1.finalTime)
     text("Congratulations!\nYour score was:\n"+player1.score+" points,\nand your time was:\n"+player1.finalTime+" seconds.",width/2,height/5-50)
     // text("Congratulations!\nYour score was:\n"+"21000"+" points,\nand your time was:\n"+"130.8"+" seconds.",width/2,height/5,)
     // print("done")

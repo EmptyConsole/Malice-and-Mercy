@@ -75,6 +75,7 @@ function screenZero(){
   pop();
   music[0].setVolume(0);
   if(b.clicked){
+    reset()
     screen=1;
     // next = 0;
     sounds[7].play();
