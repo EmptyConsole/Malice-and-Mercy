@@ -993,7 +993,7 @@ spike(x,y,r){
      translate(x,y);
   rotate(r*PI/180);
       if(kb.pressing('-')){
-        rect(0,0,24,13)
+      //  rect(0,0,24,13)
       }
      pop();
    }
