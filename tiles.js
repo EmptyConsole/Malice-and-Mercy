@@ -591,7 +591,7 @@ function keyPressed() {
   //   player1.skinx = floor(random(0,15))
   // }
     if(keyIsDown(220)){
-    levelEdit = !levelEdit;
+  //  levelEdit = !levelEdit;
   }
   // if(keyIsDown(66)){
   //   camP = !camP;
