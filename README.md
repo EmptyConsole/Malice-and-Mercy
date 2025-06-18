@@ -1,3 +1,4 @@
+#Malice and Mercy
 A platformer filled with choices... Created by Empty Console. Found on Discord at shyguygamedev, hfanggamedev, and qorachniuphorbia.
 
 This platforming game is being submitted into the Summer P5 Play Game Jam. 
