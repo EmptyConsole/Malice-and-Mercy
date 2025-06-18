@@ -1051,7 +1051,7 @@ spike(x,y,r){
     stroke(0,-100+80/dis(player1.px,player1.py,this.bx,this.by)*355);
     fill(255,-100+80/dis(player1.px,player1.py,this.bx,this.by)*355);
     textSize(20)
-    let holder = str(this.delay);
+    let holder = '' + this.delay;
     holder = holder.replace(/\\n/g, '\n');
       noStroke()
     text(holder,0,60-this.range*20);

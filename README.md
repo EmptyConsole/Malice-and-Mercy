@@ -1,7 +1,9 @@
 # Malice and Mercy
+
 A platformer filled with choices... Created by Empty Console. Found on Discord at shyguygamedev, hfanggamedev, and qorachniuphorbia.
 
-This platforming game is being submitted into the Summer P5 Play Game Jam. 
+This platforming game has been submitted into the Summer p5play Game Jam.
+
 It's main character is a grim reaper, who must choose between saving or killing a person to advance to the next level.
 
 Arrow keys to move.

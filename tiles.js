@@ -719,7 +719,7 @@ function keyPressed() {
         if(blocks[selEdit].type==8){
           let holder = "";
           holder+=prompt("Add sign text here.");
-          blocks[selEdit].delay = str(holder);
+          blocks[selEdit].delay = '' + holder;
         print("Sign text has been changed.");
         }
       }
