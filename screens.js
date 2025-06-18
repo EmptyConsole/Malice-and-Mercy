@@ -73,7 +73,7 @@ function screenZero(){
   fill(255);
   text("SETTINGS",0,2.5);
   pop();
-  music[0].setVolume(0);
+  // music[0].setVolume(0);
   if(b.clicked){
     reset()
     screen=1;
