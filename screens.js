@@ -78,6 +78,7 @@ function screenZero(){
     reset()
     screen=1;
     // next = 0;
+    music[0].setVolume(0)
     sounds[7].play();
     sounds[7].setVolume(1*soundVol*masterVol);
     music[0].stop()

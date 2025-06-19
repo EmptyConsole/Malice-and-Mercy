@@ -98,6 +98,7 @@ function setup() {
   
 //  player1.makeSprite();
   amp = new p5.Amplitude();
+  music[4].setVolume(0)
  music[4].loop();
   music[4].setVolume(0.8*musicVol*masterVol)
   player1.skinx = 0;
@@ -197,6 +198,11 @@ var speecher = false;
 var screen = 0;
 var trans = 200;
 var charge = 0;
+var gameThrow = false;
+var gameJump = false;
+var gameMove = 0;
+var gameL = false;
+var gameR = false;
 }
 
 var arrows=[]
@@ -204,12 +210,27 @@ var arrows=[]
 
 //Void Draw
 var workingT = false; 
+var overlay = false;
 function draw() {
+     gameMove = contro.leftStick.x;
+     gameJump = contro.presses('a');
+     gameThrow = contro.presses('x');
+     gameR = contro.presses('r')||contro.presses('zr');
+     gameL = contro.presses('l')||contro.presses('zl');
+  //
+  
+  /*
+       Y
+ o   X   B
+       A
+  
+  */
   if(currentLevel==7){
     levelCode = levels[0];
 currentLevel = 0;
      screen = 2;
     // music[4].loop()
+    music[4].setVolume(0)
     music[0].setVolume(0*musicVol*masterVol,1)
     music[4].setVolume(0.8*musicVol*masterVol,1.5,1)
     // print(player1.startTime)
@@ -261,7 +282,7 @@ currentLevel = 0;
   push();
   pop()
   if(keyIsDown(80)){
-    print(blocks.length,floor(frameRate()))
+    //print(blocks.length,floor(frameRate()))
   //  saveGif('mySketch',20);
     let sum = 0;
     for(let i=0; i<blocks.length; i++){
@@ -539,7 +560,75 @@ currentLevel = 0;
       //equipScreen()
      screenThree()
 }
-    resetMatrix();
+  resetMatrix();
+  if(screen == 1&&overlay){
+    background(0,200);
+    
+    //restarto levelo button
+    levelB.work();
+    push();
+    translate(levelB.x,levelB.y);
+    scale(levelB.size,levelB.size);
+    fill(0);
+    stroke(255);
+    strokeWeight(7.5)
+    rect(0,0,levelB.sizeX,levelB.sizeY);
+    textAlign(CENTER,CENTER);
+    textSize(70);
+    fill(255);
+    stroke(255);
+    strokeWeight(2);
+    text("Restart Level",0,0)
+    pop();
+    
+    restartB.work();
+    push();
+    translate(restartB.x,restartB.y);
+    scale(restartB.size,restartB.size);
+    fill(0);
+    stroke(255);
+    strokeWeight(7.5)
+    rect(0,0,restartB.sizeX,restartB.sizeY);
+    textAlign(CENTER,CENTER);
+    textSize(70);
+    fill(255);
+    stroke(255);
+    strokeWeight(2);
+    text("Restart Game",0,0)
+    pop();
+    
+    settingB.work();
+    push();
+    translate(settingB.x,settingB.y);
+    scale(settingB.size,settingB.size);
+    fill(0);
+    stroke(255);
+    strokeWeight(7.5)
+    rect(0,0,settingB.sizeX,settingB.sizeY);
+    textAlign(CENTER,CENTER);
+    textSize(70);
+    fill(255);
+    stroke(255);
+    strokeWeight(2);
+    text("Settings",0,0);
+    pop();
+    if(restartB.clicked){
+       reset();
+      overlay = false;
+    }
+    if(levelB.clicked){
+       player1.changeLevel(currentLevel);
+      overlay = false;
+    }
+    if(settingB.clicked){
+      screen = 4;
+    }
+  }
+  if(screen ==4){
+    angleMode(DEGREES)
+    screenThree2();
+  }
+  resetMatrix();
   translate(500,300);
   scale(zoom/100,zoom/100);
   translate(-500,-300);
@@ -547,6 +636,10 @@ currentLevel = 0;
   mouser=createVector((mouseX-500)/(zoom/100)-trucam.x+500,(mouseY-300)/(zoom/100)-trucam.y+300);
   mouseSkin();
 }
+var levelB = new button(500,100,550,120,1,1.2,1.2,1.2);
+var restartB = new button(500,300,550,120,1,1.2,1.2,1.2);
+var settingB = new button(500,500,370,120,1,1.2,1.2,1.2);
+//seperate do not touch
 var menuB = new button(500,500,300,120,1,1.2,1.2,1.2);
 var vol = 0.4;
 var currentSound = 4;

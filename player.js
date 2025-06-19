@@ -213,20 +213,20 @@ class player{
       
       if(!keyIsDown(16)){
     //Movement Inputs
-    if(kb.pressing(this.keyIn[3])||kb.pressing(this.keyIn[7])){
+    if(kb.pressing(this.keyIn[3])||kb.pressing(this.keyIn[7])||gameMove>=0.3){
       this.xvel+=this.xacc;
       if(player1.startTime==null){
     player1.startTime=millis()
   }
     }
-    if(kb.pressing(this.keyIn[1])||kb.pressing(this.keyIn[5])){
+    if(kb.pressing(this.keyIn[1])||kb.pressing(this.keyIn[5])||gameMove<=-0.3){
       this.xvel-=this.xacc;
       if(player1.startTime==null){
     player1.startTime=millis()
   }
       
     }
-    if((kb.pressing(this.keyIn[0])||kb.pressing(this.keyIn[4])||kb.pressing(" "))&&(this.jumpDown||this.jumps==this.maxJumps)&&this.jumps>0 && blocks.findIndex(hold => hold.type==13&&rectHit(hold.bx,hold.by,this.px,this.py,hold.bsx,hold.bsy,this.psx,this.psy))==-1){
+    if((kb.pressing(this.keyIn[0])||kb.pressing(this.keyIn[4])||kb.pressing(" ")||gameJump)&&(this.jumpDown||this.jumps==this.maxJumps)&&this.jumps>0 && blocks.findIndex(hold => hold.type==13&&rectHit(hold.bx,hold.by,this.px,this.py,hold.bsx,hold.bsy,this.psx,this.psy))==-1){
       if(player1.startTime==null){
     player1.startTime=millis()
   }
@@ -240,7 +240,7 @@ class player{
             bulletsP[bulletsP.length] = new bulletP(this.px+random(-10,10),this.py-12,this.px+cos(random(-180,0)*PI/180)*10-this.xvel*2,this.py+12+sin(random(-180,0)*PI/180)*10,random(3,9),"4");
            }
     }
-    if(kb.pressing(this.keyIn[0])!=true&&kb.pressing(this.keyIn[4])!=true&&kb.pressing(" ")!=true){
+    if(kb.pressing(this.keyIn[0])!=true&&kb.pressing(this.keyIn[4])!=true&&kb.pressing(" ")!=true&&!gameJump){
       // if(blocks.findIndex(hold => hold.type==13&&rectHit(hold.bx,hold.by,this.px,this.py,hold.bsx,hold.bsy,this.psx,this.psy))==-1){
         this.jumpDown=true;
       // }
@@ -700,7 +700,7 @@ class player{
     newyv = [];
   newj = [];
     for(var i=0; i<blocks.length; i++){
-      if(blocks[i].collideWith == true&&!(blocks[i].type==2&&(kb.pressing(this.keyIn[2])||kb.pressing(this.keyIn[6])))){
+      if(blocks[i].collideWith == true&&!(blocks[i].type==2&&(kb.pressing(this.keyIn[2])||kb.pressing(this.keyIn[6])||contro.leftStick.y>=0.6))){
         let bl = blocks[i];
       if(
         ((this.prey+this.psy/2)<=(bl.by-bl.bsy/2)&&

@@ -2,7 +2,7 @@ var throwable = [1,2,3,4,5];
 function kbTypePressing(){
  // print(player1.able) 
   // if(kb.presses('q')&&!kb.pressing('shift')&&throwable.findIndex(hold=>hold==player1.abil[player1.slot])!=-1 && player1.able&&bombs.length==0&&player1.gravLine.stage==3){
-  if(kb.presses('q')&&throwable.findIndex(hold=>hold==player1.abil[player1.slot])!=-1 && player1.able&&bombs.length==0&&player1.gravLine.stage==3){
+  if((gameThrow||kb.presses('q'))&&throwable.findIndex(hold=>hold==player1.abil[player1.slot])!=-1 && player1.able&&bombs.length==0&&player1.gravLine.stage==3){
     // print("thrown")
     
     // if(kb.presses('q')&&!kb.pressing('shift')&&throwable.findIndex(hold => hold==player1.abil[player1.slot])!=-1){
@@ -44,11 +44,22 @@ function kbTypePressing(){
   if(kb.presses('3')){
     player1.slot = 2;
   }
+  if(gameL){
+     player1.slot--;
+   }
+  if(gameR){
+     player1.slot++;
+   }
+  player1.slot=player1.slot%3;
+ // print(player1.slot)
+  if(player1.slot<0){
+     player1.slot=2;
+     }
   // if(kb.presses(']')){
   //   player1.inDark = !player1.inDark;
   // }
-  if(kb.presses("Alt")){
+  if(kb.presses("Alt")||contro.presses('start')){
     // print("reset")
-    reset()
+    overlay=!overlay;
   }
 }
