@@ -8,6 +8,21 @@ var masterVol = 0.9;
 var preMaster = 0.9;
 function screenThree(){
   background(20);
+  if(gameFU){
+    buttonS2--;
+    sounds[6].play();
+    sounds[6].setVolume(1*soundVol*masterVol);
+  }
+  if(gameFD){
+    buttonS2++;
+    sounds[6].play();
+    sounds[6].setVolume(1*soundVol*masterVol);
+  }
+  buttonS2 = buttonS2%4;
+  if(buttonS2<0){
+    buttonS2=3;
+  }
+  // print(buttonS2)
   backer.work();
   push();
   translate(backer.x,backer.y);
@@ -24,17 +39,110 @@ function screenThree(){
   text("BACK",0,2.5);
   pop();
   
+  if(buttonS2==0){
+    push();
+    strokeWeight(2.5);
+    stroke(255,200)
+    translate(backer.x+backer.sizeX/2+50,backer.y);
+    textSize(35);
+    textAlign(CENTER,CENTER);
+    text("<",0,0);
+    pop();
+    backer.sizev=max(0.05,backer.sizev);
+    backer.hover = true;
+    print(2);
+    if(contro.presses('a')){
+      backer.clicked=true
+    }
+ }
+  if(buttonS2==1){
+    push();
+    strokeWeight(2.5);
+    stroke(255,200)
+    translate(930,masters.y)
+    textSize(35);
+    textAlign(CENTER,CENTER);
+    text("<",0,0);
+    pop();
+    // masters.held=true
+    // print(masters.hover)
+    // masters.hover=true
+    masters.sizev=max(0.07,masters.sizev);
+    masters.hover = true;
+    // masters.held=true
+    if(contro.pressing('r')||contro.pressing('zr')){
+        // print("movingRight")
+        masters.x+=1
+      }
+    if(contro.pressing('l')||contro.pressing('zl')){
+        // print("movingLeft")
+        masters.x-=1
+      }
+  }
+  if(buttonS2==2){
+    // soundss.held=true
+    soundss.sizev=max(0.07,soundss.sizev);
+    soundss.hover = true;
+    push();
+    strokeWeight(2.5);
+    stroke(255,200)
+    translate(930,soundss.y)
+    textSize(35);
+    textAlign(CENTER,CENTER);
+    text("<",0,0);
+    pop();
+    if(contro.pressing('r')||contro.pressing('zr')){
+        // print("movingRight")
+        soundss.x+=1
+      }
+    if(contro.pressing('l')||contro.pressing('zl')){
+        // print("movingLeft")
+        soundss.x-=1
+      }
+    // soundss.held=true
+  }
+  if(buttonS2==3){
+    // musics.held=true
+    musics.sizev=max(0.07,musics.sizev);
+    musics.hover = true;
+    push();
+    strokeWeight(2.5);
+    stroke(255,200)
+    translate(930,musics.y)
+    textSize(35);
+    textAlign(CENTER,CENTER);
+    text("<",0,0);
+    pop();
+    // musics.held=true
+    if(contro.pressing('r')||contro.pressing('zr')){
+        // print("movingRight")
+        musics.x+=1
+      }
+    if(contro.pressing('l')||contro.pressing('zl')){
+        // print("movingLeft")
+        musics.x-=1
+      }
+  }
+  
+  // print(masters.size)
   masters.work();
   if(masters.held){
-    masters.x = mouseX;
-    masters.x = max(550,masters.x);
+    // if(contro==false){
+      masters.x = mouseX;
+    // }else{
+      // print("connected")
+      
+        
+    // }
+    
+  }
+  masters.x = max(550,masters.x);
     masters.x = min(900,masters.x);
-    if(abs(masterVol-preMaster)>=0.05){
+    if(abs(masterVol-preMaster)>=0.03){
       sounds[6].play();
       sounds[6].setVolume(0.7*soundVol*masterVol);
       preMaster = masterVol;
     }
-  }
   push();
   translate(masters.x,masters.y);
   scale(masters.size,masters.size);
@@ -52,10 +160,14 @@ function screenThree(){
   
   musics.work();
   if(musics.held){
-    musics.x = mouseX;
-    musics.x = max(550,musics.x);
-    musics.x = min(900,musics.x);
+    // if(contro==false){
+      musics.x = mouseX;
+    // }
+    
+    
   }
+  musics.x = max(550,musics.x);
+    musics.x = min(900,musics.x);
   push();
   translate(musics.x,musics.y);
   scale(musics.size,musics.size);
@@ -74,15 +186,19 @@ function screenThree(){
   
   soundss.work();
   if(soundss.held){
-    soundss.x = mouseX;
-    soundss.x = max(550,soundss.x);
+    // if(contro==false){
+      soundss.x = mouseX;
+    // }
+    
+    
+  }
+  soundss.x = max(550,soundss.x);
     soundss.x = min(900,soundss.x);
-    if(abs(soundVol-preSound)>=0.05){
+    if(abs(soundVol-preSound)>=0.03){
       sounds[7].play();
       sounds[7].setVolume(0.7*soundVol*masterVol);
       preSound = soundVol;
     }
-  }
   push();
   translate(soundss.x,soundss.y);
   scale(soundss.size,soundss.size);
@@ -122,6 +238,21 @@ function screenThree(){
 
 function screenThree2(){
   background(20);
+  if(gameFU){
+    buttonS2--;
+    sounds[6].play();
+    sounds[6].setVolume(1*soundVol*masterVol);
+  }
+  if(gameFD){
+    buttonS2++;
+    sounds[6].play();
+    sounds[6].setVolume(1*soundVol*masterVol);
+  }
+  buttonS2 = buttonS2%4;
+  if(buttonS2<0){
+    buttonS2=3;
+  }
+  // print(buttonS2)
   backer.work();
   push();
   translate(backer.x,backer.y);
@@ -138,17 +269,110 @@ function screenThree2(){
   text("BACK",0,2.5);
   pop();
   
+  if(buttonS2==0){
+    push();
+    strokeWeight(2.5);
+    stroke(255,200)
+    translate(backer.x+backer.sizeX/2+50,backer.y);
+    textSize(35);
+    textAlign(CENTER,CENTER);
+    text("<",0,0);
+    pop();
+    backer.sizev=max(0.05,backer.sizev);
+    backer.hover = true;
+    print(2);
+    if(contro.presses('a')){
+      backer.clicked=true
+    }
+ }
+  if(buttonS2==1){
+    push();
+    strokeWeight(2.5);
+    stroke(255,200)
+    translate(930,masters.y)
+    textSize(35);
+    textAlign(CENTER,CENTER);
+    text("<",0,0);
+    pop();
+    // masters.held=true
+    // print(masters.hover)
+    // masters.hover=true
+    masters.sizev=max(0.07,masters.sizev);
+    masters.hover = true;
+    // masters.held=true
+    if(contro.pressing('r')||contro.pressing('zr')){
+        // print("movingRight")
+        masters.x+=1
+      }
+    if(contro.pressing('l')||contro.pressing('zl')){
+        // print("movingLeft")
+        masters.x-=1
+      }
+  }
+  if(buttonS2==2){
+    // soundss.held=true
+    soundss.sizev=max(0.07,soundss.sizev);
+    soundss.hover = true;
+    push();
+    strokeWeight(2.5);
+    stroke(255,200)
+    translate(930,soundss.y)
+    textSize(35);
+    textAlign(CENTER,CENTER);
+    text("<",0,0);
+    pop();
+    if(contro.pressing('r')||contro.pressing('zr')){
+        // print("movingRight")
+        soundss.x+=1
+      }
+    if(contro.pressing('l')||contro.pressing('zl')){
+        // print("movingLeft")
+        soundss.x-=1
+      }
+    // soundss.held=true
+  }
+  if(buttonS2==3){
+    // musics.held=true
+    musics.sizev=max(0.07,musics.sizev);
+    musics.hover = true;
+    push();
+    strokeWeight(2.5);
+    stroke(255,200)
+    translate(930,musics.y)
+    textSize(35);
+    textAlign(CENTER,CENTER);
+    text("<",0,0);
+    pop();
+    // musics.held=true
+    if(contro.pressing('r')||contro.pressing('zr')){
+        // print("movingRight")
+        musics.x+=1
+      }
+    if(contro.pressing('l')||contro.pressing('zl')){
+        // print("movingLeft")
+        musics.x-=1
+      }
+  }
+  
+  // print(masters.size)
   masters.work();
   if(masters.held){
-    masters.x = mouseX;
-    masters.x = max(550,masters.x);
+    // if(contro==false){
+      masters.x = mouseX;
+    // }else{
+      // print("connected")
+      
+        
+    // }
+    
+  }
+  masters.x = max(550,masters.x);
     masters.x = min(900,masters.x);
-    if(abs(masterVol-preMaster)>=0.05){
+    if(abs(masterVol-preMaster)>=0.03){
       sounds[6].play();
       sounds[6].setVolume(0.7*soundVol*masterVol);
       preMaster = masterVol;
     }
-  }
   push();
   translate(masters.x,masters.y);
   scale(masters.size,masters.size);
@@ -166,10 +390,14 @@ function screenThree2(){
   
   musics.work();
   if(musics.held){
-    musics.x = mouseX;
-    musics.x = max(550,musics.x);
-    musics.x = min(900,musics.x);
+    // if(contro==false){
+      musics.x = mouseX;
+    // }
+    
+    
   }
+  musics.x = max(550,musics.x);
+    musics.x = min(900,musics.x);
   push();
   translate(musics.x,musics.y);
   scale(musics.size,musics.size);
@@ -188,15 +416,19 @@ function screenThree2(){
   
   soundss.work();
   if(soundss.held){
-    soundss.x = mouseX;
-    soundss.x = max(550,soundss.x);
+    // if(contro==false){
+      soundss.x = mouseX;
+    // }
+    
+    
+  }
+  soundss.x = max(550,soundss.x);
     soundss.x = min(900,soundss.x);
-    if(abs(soundVol-preSound)>=0.05){
+    if(abs(soundVol-preSound)>=0.03){
       sounds[7].play();
       sounds[7].setVolume(0.7*soundVol*masterVol);
       preSound = soundVol;
     }
-  }
   push();
   translate(soundss.x,soundss.y);
   scale(soundss.size,soundss.size);

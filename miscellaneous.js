@@ -37,10 +37,10 @@ function mouseSkin(){
   rotate(PI/4)
   strokeWeight(3);
   noFill();
-  stroke(255, 153, 28);
+  stroke(255, 153, 28,lastMM/100*300);
   rect(0,0,13,13,4);
   rotate(PI/4+frameCount)
-  fill(255,153,28);
+  fill(255,153,28,lastMM/100*300);
   rect(0,0,1,1,0.5);
   pop();
   if(keyIsDown(16)&&levelEdit){

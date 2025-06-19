@@ -49,8 +49,44 @@ var amp;
 let speechRec;
 let command = ""
 let spaach = false;
+//gamepad Flick Upwards on left stick
+//not f*ck u
+//im bad a variable names okay?
+var gameFU = false;
+var gameFD = false;
+//to detect change, this is never change
+var gameFU2 = false;
+var gameFD2 = false;
+var lastMM = 100;
+var buttonS1 = 0;
+var buttonS2 = 0;
+var buttonS3 = 0;
 //Void Setup
 function setup() {
+  gameFU = false;
+    gameFD = false;
+  if(abs(contro.leftStick.y)<=0.7){
+    gameFU2 = false;
+    gameFD2 = false;
+  }
+  if(contro.leftStick.y>0.8&&!gameFD2){
+    gameFD = true;
+    gameFD2 = true;
+  }
+  if(contro.leftStick.y<-0.8&&!gameFU2){
+    gameFU = true;
+    gameFU2 = true;
+  }
+  if(contros.length<=0){
+    buttonS1 = -1;
+    buttonS2 = -1;
+    buttonS3 = -1;
+  }
+  noCursor();
+  lastMM-=0.7;
+  if(mouseX !== pmouseX || mouseY !== pmouseY){
+     lastMM = 100;
+  }
   createCanvas(1000,600)
   frameRate(60)
   rectMode(CENTER);
@@ -205,15 +241,50 @@ var gameL = false;
 var gameR = false;
 }
 
-var arrows=[]
+var lastMM = 100;
+var buttonS1 = 0;
+var buttonS2 = 0;
+var buttonS3 = 0;
 // var sensors=[]
-
+var arrows = [];
 //Void Draw
 var workingT = false; 
 var overlay = false;
+//gamepad Flick Upwards on left stick
+//not f*ck u
+//im bad a variable names okay?
+var gameFU = false;
+var gameFD = false;
+//to detect change, this is never change
+var gameFU2 = false;
+var gameFD2 = false;
 function draw() {
+ gameFU = false;
+    gameFD = false;
+  if(abs(contro.leftStick.y)<=0.7){
+    gameFU2 = false;
+    gameFD2 = false;
+  }
+  if(contro.leftStick.y>0.8&&!gameFD2){
+    gameFD = true;
+    gameFD2 = true;
+  }
+  if(contro.leftStick.y<-0.8&&!gameFU2){
+    gameFU = true;
+    gameFU2 = true;
+  }
+  if(contros.length<=0){
+    buttonS1 = -1;
+    buttonS2 = -1;
+    buttonS3 = -1;
+  }
+  noCursor();
+  lastMM-=0.7;
+  if(mouseX !== pmouseX || mouseY !== pmouseY){
+     lastMM = 100;
+  }
      gameMove = contro.leftStick.x;
-     gameJump = contro.presses('a');
+     gameJump = contro.pressing('a');
      gameThrow = contro.presses('x');
      gameR = contro.presses('r')||contro.presses('zr');
      gameL = contro.presses('l')||contro.presses('zl');
@@ -564,6 +635,21 @@ currentLevel = 0;
   if(screen == 1&&overlay){
     background(0,200);
     
+    if(gameFU){
+    buttonS2--;
+    sounds[6].play();
+    sounds[6].setVolume(1*soundVol*masterVol);
+  }
+  if(gameFD){
+    buttonS2++;
+    sounds[6].play();
+    sounds[6].setVolume(1*soundVol*masterVol);
+  }
+  buttonS2 = buttonS2%3;
+  if(buttonS2<0){
+    buttonS2=2;
+  }
+    
     //restarto levelo button
     levelB.work();
     push();
@@ -581,6 +667,23 @@ currentLevel = 0;
     text("Restart Level",0,0)
     pop();
     
+    if(buttonS2==0){
+    push();
+    strokeWeight(2.5);
+    stroke(255,200)
+    translate(levelB.x+levelB.sizeX/2+100,levelB.y);
+    textSize(42);
+    textAlign(CENTER,CENTER);
+    text("<",0,0);
+    pop();
+    levelB.sizev=max(0.05,levelB.sizev);
+    levelB.hover = true;
+    print(2);
+    if(contro.presses('a')){
+      levelB.clicked=true
+    }
+ }
+    
     restartB.work();
     push();
     translate(restartB.x,restartB.y);
@@ -597,6 +700,23 @@ currentLevel = 0;
     text("Restart Game",0,0)
     pop();
     
+    if(buttonS2==1){
+    push();
+    strokeWeight(2.5);
+    stroke(255,200)
+    translate(restartB.x+restartB.sizeX/2+100,restartB.y);
+    textSize(42);
+    textAlign(CENTER,CENTER);
+    text("<",0,0);
+    pop();
+    restartB.sizev=max(0.05,restartB.sizev);
+    restartB.hover = true;
+    print(2);
+    if(contro.presses('a')){
+      restartB.clicked=true
+    }
+ }
+    
     settingB.work();
     push();
     translate(settingB.x,settingB.y);
@@ -612,6 +732,24 @@ currentLevel = 0;
     strokeWeight(2);
     text("Settings",0,0);
     pop();
+    
+    if(buttonS2==2){
+    push();
+    strokeWeight(2.5);
+    stroke(255,200)
+    translate(settingB.x+settingB.sizeX/2+100,settingB.y);
+    textSize(42);
+    textAlign(CENTER,CENTER);
+    text("<",0,0);
+    pop();
+    settingB.sizev=max(0.05,settingB.sizev);
+    settingB.hover = true;
+    print(2);
+    if(contro.presses('a')){
+      settingB.clicked=true
+    }
+ }
+    
     if(restartB.clicked){
        reset();
       overlay = false;
@@ -624,6 +762,9 @@ currentLevel = 0;
       screen = 4;
     }
   }
+  
+  
+  
   if(screen ==4){
     angleMode(DEGREES)
     screenThree2();

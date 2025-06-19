@@ -8,6 +8,20 @@ var offUp = 0;
 var offUpV = 0;
 function screenZero(){
   background(20);
+  if(gameFU){
+    buttonS1--;
+    sounds[6].play();
+    sounds[6].setVolume(1*soundVol*masterVol);
+  }
+  if(gameFD){
+    buttonS1++;
+    sounds[6].play();
+    sounds[6].setVolume(1*soundVol*masterVol);
+  }
+  buttonS1 = buttonS1%2;
+  if(buttonS1<0){
+    buttonS1=1;
+  }
      angleMode(DEGREES)
     fill(255);
     stroke(255)
@@ -59,6 +73,23 @@ function screenZero(){
   text("PLAY",0,2.5);
   pop();
   
+  
+  // if(contro==true){
+    if(buttonS1==0){
+    push();
+    strokeWeight(2.5);
+    stroke(255,200)
+    translate(b.x+b.sizeX/2+50,b.y);
+    textSize(35);
+    textAlign(CENTER,CENTER);
+    text("<",0,0);
+    pop();
+    b.sizev=max(0.05,b.sizev);
+    b.hover = true;
+ }
+//   }
+  
+
   sett.work();
   push();
   textSize(80);
@@ -73,12 +104,29 @@ function screenZero(){
   fill(255);
   text("SETTINGS",0,2.5);
   pop();
+  //;-; code isn't working
+  //^-^ im an idiot, it owrks!
+  // if(contro==true){
+    if(buttonS1==1){
+    push();
+    strokeWeight(2.5);
+    stroke(255,200)
+    translate(sett.x+sett.sizeX/2+50,sett.y);
+    textSize(35);
+    textAlign(CENTER,CENTER);
+    text("<",0,0);
+    pop();
+    sett.sizev=max(0.05,sett.sizev);
+    sett.hover = true;
+ }
+  // }
+  
+  
   // music[0].setVolume(0);
-  if(b.clicked){
+  if(b.clicked||(buttonS1==0&&contro.presses('a'))){
     reset()
     screen=1;
     // next = 0;
-    music[0].setVolume(0)
     sounds[7].play();
     sounds[7].setVolume(1*soundVol*masterVol);
     music[0].stop()
@@ -89,7 +137,7 @@ function screenZero(){
     music[4].setVolume(0*musicVol*masterVol,2);
     player1.startTime = millis();
   }
-  if(sett.clicked){
+  if(sett.clicked||(buttonS1==1&&contro.presses('a'))){
     screen = 3;
     sounds[7].play();
     sounds[7].setVolume(1*soundVol*masterVol);

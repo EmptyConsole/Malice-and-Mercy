@@ -18,6 +18,8 @@ class button{
     //just in case i use a for loop in constructor, generally it won't disturb much if it's below it, but just in case :3
     //it doesn't do anything lol, past HF_ang was an idiot
     //lmao
+    
+    //this is ShyGuy. what was the comment above...
     this.type = i2;
   }
   work(){
