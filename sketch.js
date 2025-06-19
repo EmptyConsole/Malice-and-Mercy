@@ -585,6 +585,7 @@ currentLevel = 0;
   }
   if(screen==2){
     menuB.work();
+    buttonS2=0
     //next = 4;
     background(20)
     textSize(60)
@@ -596,6 +597,22 @@ currentLevel = 0;
     // text("Congratulations!\nYour score was:\n"+"21000"+" points,\nand your time was:\n"+"130.8"+" seconds.",width/2,height/5,)
     // print("done")
     
+    if(buttonS2==0){
+    push();
+    strokeWeight(2.5);
+    stroke(255,200)
+    translate(menuB.x+menuB.sizeX/2+100,menuB.y);
+    textSize(42);
+    textAlign(CENTER,CENTER);
+    text("<",0,0);
+    pop();
+    menuB.sizev=max(0.05,menuB.sizev);
+    menuB.hover = true;
+    print(2);
+    if(contro.presses('a')){
+      menuB.clicked=true
+    }
+ }
     //setting up music
     // music[0].stop()
    // frameRate(0)
@@ -606,6 +623,7 @@ currentLevel = 0;
     noFill();
     stroke(255);
     rect(0,0,menuB.sizeX,menuB.sizeY);
+    
     textAlign(CENTER,CENTER);
     textSize(95);
     strokeWeight(2);
