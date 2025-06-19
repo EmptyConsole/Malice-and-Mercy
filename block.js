@@ -292,13 +292,13 @@ class block{
         this.bombMap.py-=(this.by-player1.py+5+sin(frameCount/20)*2)/5;
         // }
         
-         if(kb.presses("q")){
+         if(kb.presses("q")||gameThrow){
            this.bombMap.throws();
            this.held = false;
            player1.holding=false
            player1.able=true
          }
-       if(kb.presses("f")&&player1.killLine.stage==5){
+       if((kb.presses("f")||contro.presses('b'))&&player1.killLine.stage==5){
             //kill
           //  player1.changeLevel(this.delay)
              player1.killLine.time=0;
@@ -368,14 +368,14 @@ class block{
           //draw
           if(rectHit(player1.px,player1.py,this.bx,this.by,player1.psx,player1.psy,this.bsx*2,this.bsy*3)){
             // player1.able=false
-          if(kb.presses("f")&&player1.killLine.stage==5){
+          if((kb.presses("f")||contro.presses('b'))&&player1.killLine.stage==5){
             //kill
           //  player1.changeLevel(this.delay)
              player1.killLine.time=0;
             // player1.px=0
             // player1.py=0
             //print(player1.score)
-          }else if(kb.presses("e")){
+          }else if((kb.presses("e")||contro.presses('y'))){
             //hold
             // print(2)
             this.held=true
