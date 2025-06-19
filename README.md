@@ -11,6 +11,4 @@ Arrow keys to move.
 2 to equip the anti-grav ability.
 3 to equip the grow ability.
 Q to throw equipped ability.
-R to reset to last checkpoint.
-Hold R to reset the level.
-Option or Alt to restart the entire game.
+Option or Alt to go to the in-game menu
