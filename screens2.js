@@ -6,7 +6,10 @@ var masters = new button(550,200,20,40,1,0.2,1.2,1.3);
 var preSound = 0.7;
 var masterVol = 0.9;
 var preMaster = 0.9;
+var speedS = 0;
 function screenThree(){
+  speedS = max(-7,min(speedS,7));
+  speedS/=1.6;
   background(20);
   if(gameFU){
     buttonS2--;
@@ -46,6 +49,7 @@ function screenThree(){
     translate(backer.x+backer.sizeX/2+50,backer.y);
     textSize(35);
     textAlign(CENTER,CENTER);
+    fill(255)
     text("<",0,0);
     pop();
     backer.sizev=max(0.05,backer.sizev);
@@ -62,6 +66,8 @@ function screenThree(){
     translate(930,masters.y)
     textSize(35);
     textAlign(CENTER,CENTER);
+    fill(255)
+    fill(255)
     text("<",0,0);
     pop();
     // masters.held=true
@@ -70,13 +76,15 @@ function screenThree(){
     masters.sizev=max(0.07,masters.sizev);
     masters.hover = true;
     // masters.held=true
-    if(contro.pressing('r')||contro.pressing('zr')){
+    if(contro.pressing('r')||contro.pressing('zr')||contro.leftStick.x>=0.7){
         // print("movingRight")
-        masters.x+=1
+        masters.x+=speedS;
+        speedS+=4;
       }
-    if(contro.pressing('l')||contro.pressing('zl')){
+    if(contro.pressing('l')||contro.pressing('zl')||contro.leftStick.x<=-0.7){
         // print("movingLeft")
-        masters.x-=1
+        masters.x+=speedS
+      speedS-=4;
       }
   }
   if(buttonS2==2){
@@ -89,15 +97,19 @@ function screenThree(){
     translate(930,soundss.y)
     textSize(35);
     textAlign(CENTER,CENTER);
+    fill(255)
     text("<",0,0);
+    
     pop();
-    if(contro.pressing('r')||contro.pressing('zr')){
+    if(contro.pressing('r')||contro.pressing('zr')||contro.leftStick.x>=0.7){
         // print("movingRight")
-        soundss.x+=1
+        soundss.x+=speedS
+      speedS+=4;
       }
-    if(contro.pressing('l')||contro.pressing('zl')){
+    if(contro.pressing('l')||contro.pressing('zl')||contro.leftStick.x<=-0.7){
         // print("movingLeft")
-        soundss.x-=1
+        soundss.x+=speedS
+      speedS-=4;
       }
     // soundss.held=true
   }
@@ -111,16 +123,19 @@ function screenThree(){
     translate(930,musics.y)
     textSize(35);
     textAlign(CENTER,CENTER);
+    fill(255)
     text("<",0,0);
     pop();
     // musics.held=true
-    if(contro.pressing('r')||contro.pressing('zr')){
+    if(contro.pressing('r')||contro.pressing('zr')||contro.leftStick.x>=0.7){
         // print("movingRight")
-        musics.x+=1
+        musics.x+=speedS
+      speedS+=4;
       }
-    if(contro.pressing('l')||contro.pressing('zl')){
+    if(contro.pressing('l')||contro.pressing('zl')||contro.leftStick.x<=-0.7){
         // print("movingLeft")
-        musics.x-=1
+        musics.x+=speedS
+      speedS-=4;
       }
   }
   
@@ -237,6 +252,8 @@ function screenThree(){
 }
 
 function screenThree2(){
+  speedS = max(-7,min(speedS,7));
+  speedS/=1.6;
   background(20);
   if(gameFU){
     buttonS2--;
@@ -276,11 +293,13 @@ function screenThree2(){
     translate(backer.x+backer.sizeX/2+50,backer.y);
     textSize(35);
     textAlign(CENTER,CENTER);
+    fill(255)
+    fill(255)
     text("<",0,0);
     pop();
     backer.sizev=max(0.05,backer.sizev);
     backer.hover = true;
-    print(2);
+ //   print(2);
     if(contro.presses('a')){
       backer.clicked=true
     }
@@ -292,6 +311,8 @@ function screenThree2(){
     translate(930,masters.y)
     textSize(35);
     textAlign(CENTER,CENTER);
+    fill(255)
+    fill(255)
     text("<",0,0);
     pop();
     // masters.held=true
@@ -300,13 +321,15 @@ function screenThree2(){
     masters.sizev=max(0.07,masters.sizev);
     masters.hover = true;
     // masters.held=true
-    if(contro.pressing('r')||contro.pressing('zr')){
+    if(contro.pressing('r')||contro.pressing('zr')||contro.leftStick.x>=0.7){
         // print("movingRight")
-        masters.x+=1
+        masters.x+=speedS
+      speedS+=4;
       }
-    if(contro.pressing('l')||contro.pressing('zl')){
+    if(contro.pressing('l')||contro.pressing('zl')||contro.leftStick.x<=-0.7){
         // print("movingLeft")
-        masters.x-=1
+        masters.x+=speedS
+      speedS-=4;
       }
   }
   if(buttonS2==2){
@@ -319,15 +342,19 @@ function screenThree2(){
     translate(930,soundss.y)
     textSize(35);
     textAlign(CENTER,CENTER);
+    fill(255)
+    fill(255)
     text("<",0,0);
     pop();
-    if(contro.pressing('r')||contro.pressing('zr')){
+    if(contro.pressing('r')||contro.pressing('zr')||contro.leftStick.x>=0.7){
         // print("movingRight")
-        soundss.x+=1
+        soundss.x+=speedS
+      speedS+=4;
       }
-    if(contro.pressing('l')||contro.pressing('zl')){
+    if(contro.pressing('l')||contro.pressing('zl')||contro.leftStick.x<=-0.7){
         // print("movingLeft")
-        soundss.x-=1
+        soundss.x+=speedS
+      speedS-=4;
       }
     // soundss.held=true
   }
@@ -341,16 +368,19 @@ function screenThree2(){
     translate(930,musics.y)
     textSize(35);
     textAlign(CENTER,CENTER);
+    fill(255)
     text("<",0,0);
     pop();
     // musics.held=true
-    if(contro.pressing('r')||contro.pressing('zr')){
+    if(contro.pressing('r')||contro.pressing('zr')||contro.leftStick.x>=0.7){
         // print("movingRight")
-        musics.x+=1
+        musics.x+=speedS
+      speedS+=4;
       }
-    if(contro.pressing('l')||contro.pressing('zl')){
+    if(contro.pressing('l')||contro.pressing('zl')||contro.leftStick.x<=-0.7){
         // print("movingLeft")
-        musics.x-=1
+        musics.x+=speedS
+      speedS-=4;
       }
   }
   
