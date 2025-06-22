@@ -123,7 +123,10 @@ function screenZero(){
   
   
   // music[0].setVolume(0);
-  if(b.clicked||(buttonS1==0&&contro.presses('a'))){
+  if(buttonS1 == 0&&contro.presses('a')){
+    b.clicked = true;
+  }
+  if(b.clicked){
     reset()
     screen=1;
     // next = 0;
@@ -137,7 +140,10 @@ function screenZero(){
     music[4].setVolume(0*musicVol*masterVol,2);
     player1.startTime = millis();
   }
-  if(sett.clicked||(buttonS1==1&&contro.presses('a'))){
+  if((buttonS1==1&&contro.presses('a'))){
+    sett.clicked = true;
+  }
+  if(sett.clicked){
     screen = 3;
     sounds[7].play();
     sounds[7].setVolume(1*soundVol*masterVol);

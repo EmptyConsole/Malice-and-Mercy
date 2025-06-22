@@ -273,11 +273,13 @@ function draw() {
     gameFU = true;
     gameFU2 = true;
   }
-  if(contros.length<=0){
-    buttonS1 = -1;
-    buttonS2 = -1;
-    buttonS3 = -1;
+  //print(contro.length)
+  if(contros.length==undefined){
+    buttonS1 = undefined;
+    buttonS2 = undefined;
+    buttonS3 = undefined;
   }
+ // print(contros.length)
   noCursor();
   lastMM-=0.7;
   if(mouseX !== pmouseX || mouseY !== pmouseY){
@@ -583,6 +585,7 @@ currentLevel = 0;
     }
    }
   }
+  //587
   if(screen==2){
     menuB.work();
     buttonS2=0
@@ -608,7 +611,7 @@ currentLevel = 0;
     pop();
     menuB.sizev=max(0.05,menuB.sizev);
     menuB.hover = true;
-    print(2);
+   // print(2);
     if(contro.presses('a')){
       menuB.clicked=true
     }
@@ -696,7 +699,7 @@ currentLevel = 0;
     pop();
     levelB.sizev=max(0.05,levelB.sizev);
     levelB.hover = true;
-    print(2);
+    //print(2);
     if(contro.presses('a')){
       levelB.clicked=true
     }
@@ -729,7 +732,7 @@ currentLevel = 0;
     pop();
     restartB.sizev=max(0.05,restartB.sizev);
     restartB.hover = true;
-    print(2);
+  //  print(2);
     if(contro.presses('a')){
       restartB.clicked=true
     }
@@ -762,7 +765,7 @@ currentLevel = 0;
     pop();
     settingB.sizev=max(0.05,settingB.sizev);
     settingB.hover = true;
-    print(2);
+    //print(2);
     if(contro.presses('a')){
       settingB.clicked=true
     }

@@ -54,7 +54,7 @@ function screenThree(){
     pop();
     backer.sizev=max(0.05,backer.sizev);
     backer.hover = true;
-    print(2);
+   // print(2);
     if(contro.presses('a')){
       backer.clicked=true
     }
@@ -245,6 +245,8 @@ function screenThree(){
   
   pop();
   if(backer.clicked){
+    backer.clicked = false;
+    buttonS2 = 1;
     screen = 0;
     sounds[7].play();
     sounds[7].setVolume(1*soundVol*masterVol);
@@ -490,6 +492,7 @@ function screenThree2(){
   
   pop();
   if(backer.clicked){
+    backer.clicked = false;
     screen = 1;
     overlay= false;
     sounds[7].play();

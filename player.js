@@ -127,6 +127,7 @@ class player{
     this.killLine = new timeLine(3232,[45,6,1,15,100]);
     this.saveLine = new timeLine(3232,[10,67,100]) //
     this.personIndex = 0;
+    this.sss = 1;
   }
   timer(){
     for(var i=0;i<this.abil.length;i++){
@@ -406,6 +407,7 @@ class player{
     scale(this.ps-this.direction*max(this.yvel/50,-0.1),1+max(this.yvel/30,-0.1));
      // print(this.direction-this.direction*max(this.yv\el/50,-0.1),1+max(this.yvel/30,-0.1))
     translate(0,15);
+  //      scale(1,this.sss);
     rotate(sin(PI/2+this.roll)/20);
     this.roller = this.roller%(2*PI);
     this.rollerv += 0.05;
@@ -418,6 +420,10 @@ class player{
     translate(0,-15-(1+sin(3*PI/2+this.roller))*20);
    //   print(this.skinx,this.skiny)
       scale(1+this.size,1+this.size);
+        this.sss += (1-this.sss)/2;
+      if(contro.leftStick.y>=0.6){
+         this.sss/=1.2;
+      }
     image(playerSprite[this.skinx][this.skiny],0,-15,60,60);
     pop();
       }

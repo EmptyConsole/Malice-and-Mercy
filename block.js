@@ -87,9 +87,17 @@ class block{
       //x, y, xv, yv, typey, psx, psy, timer()
       this.bombMap = new bomb(this.bx,this.by,0,-20,64,15,15,1212);
     }
-    
-    
-    
+    this.personDialogueHasBeenActivatedByPlayer = false;
+    this.dialogue = [
+      ["Jump to talk to me...","You have the power to choose\nwhether I live or die.","Be a good\nperson and save me!","I will reward you if\nyou let me live.","F to kill or E to carry\nme back to the start."],
+      ["Jump to talk to me...","I somehow got up here\nthrough those spikes…","But I can’t get\nback down! Help!"],
+      ["Jump to talk to me...","Did you get tricked? I did…","Don’t kill me!"],
+      ["Jump to talk to me...","Those turrets up\nthere scare me.","Please spare me..."],
+      ["Jump to talk to me...","These lasers never stop…","How is that possible?"],
+      ["Jump to talk to me...","I’m scared of falling!","But also of you…"],
+      ["Jump to talk to me...","Jump to talk to me...","I’m surrounded by\na wall and a cliff…","You’re my only hope!"]
+    ];
+    this.stageD = -1;;
   }
   actions(){
     this.prebx = this.bx;
@@ -281,6 +289,34 @@ class block{
       }
       image(playerSprite[2][0],this.bx,this.by-22.5,60,60);
       this.bombMap.held = this.held;
+      if(!this.personDialogueHasBeenActivatedByPlayer&&dist(player1.px,player1.py,this.bx,this.by)<=60&&this.stageD==-1){
+         let speeder = 7.5;
+    cam.add(-(cam.x-(this.bx))/speeder,-(cam.y-(this.by))/speeder);
+      zoom -=(zoom-(min(100*1000/(200+70),100*600/(200+70))))/5;
+        this.stageD++;
+      }
+      if(this.stageD>=0&&!this.personDialogueHasBeenActivatedByPlayer){
+        if(contro.presses('a')||kb.presses(' ')||kb.presses('w')||kb.presses('UP')){
+           this.stageD++;
+        }
+        if(this.stageD<this.dialogue[currentLevel].length){
+        push();
+          stroke(0);
+          strokeWeight(2);
+          fill(255);
+          textSize(20);
+        textAlign(CENTER,BOTTOM);
+        translate(this.bx,this.by-25);
+        text(this.dialogue[currentLevel][this.stageD],0,0);
+        
+        pop();
+        }else{
+          this.personDialogueHasBeenActivatedByPlayer = true;
+        }
+      }
+      if(this.personDialogueHasBeenActivatedByPlayer){
+        
+        
       if(this.held){
         workingT = true;
         //no abilites
@@ -392,6 +428,7 @@ class block{
           // player1.able=true
         // }
       }
+    }
       // if(this.held==true){
       //   player1.able=false
       // }else{
