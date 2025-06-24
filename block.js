@@ -95,7 +95,7 @@ class block{
       ["E to talk to me...","Those turrets up\nthere scare me.","Please spare me..."],
       ["E to talk to me...","These lasers never stop…","How is that possible?"],
       ["E to talk to me...","I’m scared of falling!","But also of you…"],
-      ["E to talk to me...","E to talk to me...","I’m surrounded by\na wall and a cliff…","You’re my only hope!"]
+      ["E to talk to me...","I’m surrounded by\na wall and a cliff…","You’re my only hope!"]
     ];
     this.stageD = -1;
   }
