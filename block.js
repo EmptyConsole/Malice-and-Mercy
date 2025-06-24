@@ -89,15 +89,15 @@ class block{
     }
     this.personDialogueHasBeenActivatedByPlayer = false;
     this.dialogue = [
-      ["Jump to talk to me...","You have the power to choose\nwhether I live or die.","Be a good\nperson and save me!","I will reward you if\nyou let me live.","F to kill or E to carry\nme back to the start."],
-      ["Jump to talk to me...","I somehow got up here\nthrough those spikes…","But I can’t get\nback down! Help!"],
-      ["Jump to talk to me...","Did you get tricked? I did…","Don’t kill me!"],
-      ["Jump to talk to me...","Those turrets up\nthere scare me.","Please spare me..."],
-      ["Jump to talk to me...","These lasers never stop…","How is that possible?"],
-      ["Jump to talk to me...","I’m scared of falling!","But also of you…"],
-      ["Jump to talk to me...","Jump to talk to me...","I’m surrounded by\na wall and a cliff…","You’re my only hope!"]
+      ["E to talk to me...","You have the power to choose\nwhether I live or die.","Be a good\nperson and save me!","I will reward you if\nyou let me live.","F to kill or E to carry\nme back to the start."],
+      ["E to talk to me...","I somehow got up here\nthrough those spikes…","But I can’t get\nback down! Help!"],
+      ["E to talk to me...","Did you get tricked? I did…","Don’t kill me!"],
+      ["E to talk to me...","Those turrets up\nthere scare me.","Please spare me..."],
+      ["E to talk to me...","These lasers never stop…","How is that possible?"],
+      ["E to talk to me...","I’m scared of falling!","But also of you…"],
+      ["E to talk to me...","E to talk to me...","I’m surrounded by\na wall and a cliff…","You’re my only hope!"]
     ];
-    this.stageD = -1;;
+    this.stageD = -1;
   }
   actions(){
     this.prebx = this.bx;
@@ -296,7 +296,7 @@ class block{
         this.stageD++;
       }
       if(this.stageD>=0&&!this.personDialogueHasBeenActivatedByPlayer){
-        if(contro.presses('a')||kb.presses(' ')||kb.presses('w')||kb.presses('UP')){
+        if(contro.presses('y')||kb.presses('e')){
            this.stageD++;
         }
         if(this.stageD<this.dialogue[currentLevel].length){
